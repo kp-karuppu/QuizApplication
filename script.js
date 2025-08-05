@@ -4,6 +4,8 @@ const difficulty = document.getElementById('difficulty');
 const dashu = document.getElementById('dashu');
 const amount = document.getElementById('amount');
 const ranger = document.getElementById('ranger');
+const loading = document.querySelector('.wrapper');
+
 
 const quizScreen = document.getElementById('quiz-screen');
 const questionText = document.getElementById('question');
@@ -55,6 +57,7 @@ function difChecker(event) {
 async function getQuiz() {
     quizQuestions.length = 0;
     try {
+        console.log(`https://opentdb.com/api.php?amount=${amountValue}&category=${categoryValue}&difficulty=${difficultyValue}&type=multiple`)
         const response = await fetch(`https://opentdb.com/api.php?amount=${amountValue}&category=${categoryValue}&difficulty=${difficultyValue}&type=multiple`)
         if (!response.ok) {
             throw new Error("Network error");
@@ -64,10 +67,14 @@ async function getQuiz() {
             qust = element.question;
             answerss = element.incorrect_answers;
             corect = element.correct_answer;
+            console.log(element);
+            console.log(answerss);
+
             answerss.push(corect);
             answerss.sort(function (a, b) {
                 return Math.random() - 0.5;
             });
+            console.log(answerss);
             res = orderAnswers(answerss, corect);
             quizQuestions.push({ question: decodeHTML(qust), answers: res });
 
@@ -84,16 +91,21 @@ async function checkStatus() {
     if (categoryValue == 0) return;
     else if (difficultyValue == "") return;
     startbtn.disabled = true;
+    loading.classList.add('active');
     const loaded = await getQuiz();
     console.log(loaded)
     if (loaded && quizQuestions.length > 0) {
         totalQuestion.textContent = quizQuestions.length;
         maxScore.textContent = quizQuestions.length;
         startQuiz();
+        loading.classList.remove('active');
+
         console.log("success")
     } else {
         alert("Failed to load quiz. Please check your internet connection.");
         startbtn.disabled = false;
+        loading.classList.remove('active');
+
     }
 }
 
@@ -101,11 +113,13 @@ async function checkStatus() {
 function orderAnswers(ans, cor) {
     res = []
     ans.forEach((ele) => {
-        ele = decodeHTML(ele);
         obj = {};
-        obj.text = ele;
-        if (ele === cor) obj.correct = true;
-        else obj.correct = false;
+        obj.text = decodeHTML(ele);
+        if (ele === cor){
+            obj.correct = true;
+        }else {
+            obj.correct = false;
+        }
         res.push(obj)
     })
     return res
@@ -220,12 +234,16 @@ function selectAnswer(e) {
 
     const selectedbtn = e.target;
     const isCorrect = selectedbtn.dataset.correct === "true";
-
-    Array.from(answerContainer.children).forEach((button) => {
-        if (button.dataset.correct === "true") {
+    
+    console.log("Selected Correct:", selectedbtn.dataset.correct);
+    Array.from(answerContainer.children).forEach((button,i) => {
+        console.log(`Option ${i}:`, button.textContent, "Correct:", button.dataset.correct);
+        corrr=button.dataset.correct === "true";
+        if (corrr) {
             //console.log(button.dataset.correct)
             button.classList.add('correct');
-        } else if (button == selectedbtn) {
+        };
+        if (!corrr && button === selectedbtn) {
             button.classList.add('incorrect')
         }
     });
@@ -286,4 +304,15 @@ function restartQuiz() {
     startScreen.classList.add('active');
     amount.value = 5;
     ranger.textContent = 5;
+
+    category.selectedIndex = 0;
+    difficulty.selectedIndex = 0;
+
+    
+    categoryValue = 0;
+    difficultyValue = "";
+
+   
+    dashu.textContent = "_________";
+    dashu.classList.remove('active');
 }

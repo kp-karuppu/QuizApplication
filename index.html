@@ -9,6 +9,14 @@
 </head>
 
 <body>
+
+    <div class="wrapper">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
     <div class="container">
         <!--Start Screen-->
         <div class="screen active" id="start-screen">
@@ -17,7 +25,7 @@
 
             <label class="selector">
                 <select name="category" id="category">
-                    <option value="0">Select Category</option>
+                    <option value="0" disabled selected>Select Category</option>
                     <option value="9">General Knowledge</option>
                     <option value="11">Film</option>
                     <option value="12">Music</option>
@@ -25,13 +33,13 @@
                     <option value="18">Computer</option>
                     <option value="21">Sports</option>
                     <option value="23">History</option>
-                    <option value="27">Animals</option>
-                    <option value="28">Vehicles</option>
+                    <option value="27">Animals (bug in API)</option>
+                    <option value="28">Vehicles (bug in API)</option>
                 </select></label>
 
             <label class="selector">
                 <select name="difficulty" id="difficulty">
-                    <option value="" selected>Select Difficulty</option>
+                    <option value="" disabled selected>Select Difficulty</option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
