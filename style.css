@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 *::after,
@@ -17,6 +19,7 @@ body {
     min-height: 100dvh;
     padding: 1rem;
     position: relative;
+    touch-action: manipulation;
 }
 
 .wrapper{
@@ -120,8 +123,10 @@ body {
     font-weight: 800;
 }
 
-#start-screen input {
+#start-screen input{
     width: 100%;
+    background-color: purple;
+    color: purple;
 }
 
 #start-screen #divu {
