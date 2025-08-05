@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(214, 204, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: 1rem;
+}
+
+.container {
+    background: #fff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgb(0, 0, 0, .1);
+    width: 100%;
+    max-width: 600px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.screen {
+    display: none;
+    padding: 2rem;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+#start-screen h1 {
+    color: purple;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#start-screen p {
+    color: #5a5a5a;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#start-screen span.active {
+    color: purple;
+    font-weight: 800;
+}
+
+#start-screen input {
+    width: 100%;
+}
+
+#start-screen #divu {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+#start-screen span.ranger {
+    color: purple;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+button {
+    padding: 8px 16px;
+    color: purple;
+    background: #fff;
+    outline: none;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: purple 2px solid;
+    transition: color .5s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    background: purple;
+    color: #fff;
+}
+
+.selector {
+    position: relative;
+    display: inline;
+}
+
+select {
+    width: 100%;
+    min-height: 35px;
+    font-size: 1.2rem;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    background-color: rgb(214, 204, 255);
+    border-radius: 10px;
+    color: purple;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 20px;
+    appearance: none;
+    cursor: pointer;
+}
+
+.selector::after {
+    content: '';
+    border-width: 6px;
+    border-color: transparent;
+    border-style: solid;
+    border-top-color: purple;
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    bottom: 0px;
+}
+
+option {
+    background-color: rgb(214, 204, 255);
+    color: purple;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px;
+}
+
+
+.quiz-header {
+    margin-bottom: 2rem;
+}
+
+.quiz-header #question {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.quiz-header #quiz-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.answer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    color: #333;
+    background: rgb(214, 204, 255);
+    border: 2px solid rgb(203, 190, 255);
+    border-radius: 15px;
+    padding: 1rem;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.answer-btn:hover {
+    background-color: rgb(198, 185, 255);
+    border-color: rgb(187, 171, 255);
+    color: #333;
+}
+
+.answer-btn.correct {
+    background-color: rgb(160, 255, 160);
+    border-color: rgb(83, 255, 83);
+    color: green;
+}
+
+.answer-btn.incorrect {
+    background-color: rgb(255, 160, 160);
+    border-color: rgb(255, 83, 83);
+    color: red;
+}
+
+.progress-bar {
+    background-color: #cacaca;
+    height: 12px;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    width: 0;
+    background: purple;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+#result-screen h1 {
+    color: purple;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#result-screen #result-info {
+    background-color: rgb(214, 204, 255);
+    border: none;
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+#result-info p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#result-info {
+    margin-bottom: 20px;
+}
+
+#result-msg {
+    color: purple;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
