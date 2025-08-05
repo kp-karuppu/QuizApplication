@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <!--Start Screen-->
+        <div class="screen active" id="start-screen">
+            <h1>Quiz Time!</h1>
+
+
+            <label class="selector">
+                <select name="category" id="category">
+                    <option value="0">Select Category</option>
+                    <option value="9">General Knowledge</option>
+                    <option value="11">Film</option>
+                    <option value="12">Music</option>
+                    <option value="15">Video Games</option>
+                    <option value="18">Computer</option>
+                    <option value="21">Sports</option>
+                    <option value="23">History</option>
+                    <option value="27">Animals</option>
+                    <option value="28">Vehicles</option>
+                </select></label>
+
+            <label class="selector">
+                <select name="difficulty" id="difficulty">
+                    <option value="" selected>Select Difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select></label>
+            <div id="divu">
+                <input type="range" name="count" id="amount" min="5" max="20" value="5" />
+                <span id="ranger" class="ranger">5</span>
+            </div>
+
+            <p>
+                Test Your Knowledge with
+                <span class="" id="dashu">_________</span> questions.
+            </p>
+            <button id="start-btn">Start</button>
+        </div>
+        <!--Quiz Screen-->
+        <div class="screen" id="quiz-screen">
+            <div class="quiz-header">
+                <h1 id="question">Question Title</h1>
+                <div id="quiz-info">
+                    <p>
+                        Questions <span id="current-question">1</span>of
+                        <span id="total-question">5</span>
+                    </p>
+                    <p>Score: <span id="score">0</span></p>
+                </div>
+            </div>
+
+            <div id="answer-container" class="answer-container">
+                <!--Answer Options-->
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        <!--Result Screen-->
+        <div class="screen" id="result-screen">
+            <h1>Quiz Result</h1>
+            <div id="result-info">
+                <p>
+                    You Scored <span id="final-score">5</span> out of
+                    <span id="max-score">5</span>
+                </p>
+                <div id="result-msg">Good Effort</div>
+            </div>
+            <button id="restart-btn">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
